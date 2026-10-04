@@ -65,7 +65,7 @@ export default function MyPlan() {
         </div>
 
         {/* Tabs */}
-        <div className="mt-12 flex gap-3 border-b border-[var(--border)]">
+        <div className="mt-12 flex gap-6 border-b border-[var(--border)]">
           <button
             onClick={() => setActiveTab("plan")}
             className={`pb-4 text-sm font-bold uppercase tracking-wide ${
@@ -103,47 +103,45 @@ export default function MyPlan() {
         )}
 
         {/* Workout Cards */}
-        <div className="mt-8 grid gap-6 md:grid-cols-2">
-          {currentList.map((workout) => (
-            <div
-              key={workout.id}
-              className="overflow-hidden rounded-2xl border border-[var(--border)] bg-[var(--surface)]"
-            >
-              <div className="p-5">
+        {currentList.length > 0 && (
+          <div className="mt-8 grid gap-6 md:grid-cols-2">
+            {currentList.map((workout) => (
+              <div
+                key={workout.id}
+                className="rounded-2xl border border-[var(--border)] bg-[var(--surface)] p-5"
+              >
+                <span className="rounded-full bg-[var(--accent)] px-3 py-1 text-xs font-bold uppercase text-black">
+                  {workout.difficulty}
+                </span>
 
-                <div className="flex items-start justify-between gap-4">
-                  <div>
-                    <span className="rounded-full bg-[var(--accent)] px-3 py-1 text-xs font-bold uppercase text-black">
-                      {workout.difficulty}
-                    </span>
+                <h2 className="display-font mt-4 text-2xl font-bold uppercase">
+                  {workout.name}
+                </h2>
 
-                    <h2 className="display-font mt-4 text-2xl font-bold uppercase">
-                      {workout.name}
-                    </h2>
-
-                    <p className="mt-2 text-sm text-[var(--muted)]">
-                      {workout.equipment}
-                    </p>
-                  </div>
-                </div>
+                <p className="mt-2 text-sm text-[var(--muted)]">
+                  {workout.equipment}
+                </p>
 
                 <div className="mt-5 grid grid-cols-2 gap-4 border-t border-[var(--border)] pt-4">
                   <div>
-                    <p className="text-sm text-[var(--muted)]">Duration</p>
+                    <p className="text-sm text-[var(--muted)]">
+                      Duration
+                    </p>
                     <p className="mt-1 font-semibold">
                       {workout.duration} min
                     </p>
                   </div>
 
                   <div>
-                    <p className="text-sm text-[var(--muted)]">Calories</p>
+                    <p className="text-sm text-[var(--muted)]">
+                      Calories
+                    </p>
                     <p className="mt-1 font-semibold">
                       {workout.caloriesBurned}
                     </p>
                   </div>
                 </div>
 
-                {/* Actions */}
                 <div className="mt-5 flex flex-wrap gap-3">
                   {activeTab === "plan" && (
                     <button
@@ -165,11 +163,10 @@ export default function MyPlan() {
                     Remove
                   </button>
                 </div>
-
               </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        )}
 
       </div>
     </main>

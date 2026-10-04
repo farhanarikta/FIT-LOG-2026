@@ -1,12 +1,21 @@
+"use client";
+
 import Link from "next/link";
+import { usePlan } from "@/context/PlanContext";
 
 export default function Navbar() {
+  const { plan, saved } = usePlan();
+
   return (
     <header className="border-b border-[var(--border)] bg-[var(--background)]">
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-5 py-5 lg:px-8">
+
         {/* Logo */}
-        <Link href="/" className="text-xl font-bold tracking-tight">
-           FITLOG
+        <Link
+          href="/"
+          className="text-xl font-bold tracking-tight"
+        >
+          FITLOG
         </Link>
 
         {/* Navigation */}
@@ -32,16 +41,17 @@ export default function Navbar() {
             href="/my-plan"
             className="rounded-full bg-[var(--accent)] px-4 py-2 text-xs font-bold uppercase tracking-wide text-black"
           >
-            Plan 0
+            Plan {plan.length}
           </Link>
 
           <Link
             href="/my-plan"
             className="rounded-full border border-[var(--border)] px-4 py-2 text-xs font-bold uppercase tracking-wide text-white"
           >
-            Saved 0
+            Saved {saved.length}
           </Link>
         </div>
+
       </nav>
     </header>
   );
