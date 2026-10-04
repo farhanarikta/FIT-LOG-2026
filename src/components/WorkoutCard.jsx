@@ -1,9 +1,16 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export default function WorkoutCard({ workout }) {
   return (
-    <article className="overflow-hidden rounded-2xl border border-[var(--border)] bg-[var(--surface)]">
-      
+   
+      <Link
+  href={`/workouts/${workout.id}`}
+  className="block overflow-hidden rounded-2xl border border-[var(--border)] bg-[var(--surface)] transition hover:-translate-y-1 hover:border-[var(--accent)]"
+>
+    
+
+
       {/* Image */}
       <div className="relative aspect-[4/3] overflow-hidden">
         <Image
@@ -67,6 +74,6 @@ export default function WorkoutCard({ workout }) {
         </div>
 
       </div>
-    </article>
+    </Link>
   );
 }
