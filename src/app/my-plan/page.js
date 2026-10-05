@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { usePlan } from "@/context/PlanContext";
+import Navbar from "@/components/Navbar";
 
 export default function MyPlan() {
   const {
@@ -28,6 +29,7 @@ export default function MyPlan() {
 
   return (
     <main className="min-h-screen">
+      <Navbar />
       <div className="mx-auto max-w-7xl px-5 py-16 lg:px-8 lg:py-24">
 
         {/* Header */}

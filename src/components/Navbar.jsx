@@ -1,10 +1,12 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { usePlan } from "@/context/PlanContext";
 
 export default function Navbar() {
   const { plan, saved } = usePlan();
+  const pathname = usePathname();
 
   return (
     <header className="border-b border-[var(--border)] bg-[var(--background)]">
@@ -20,19 +22,33 @@ export default function Navbar() {
 
         {/* Navigation */}
         <div className="hidden items-center gap-8 md:flex">
+
           <Link
             href="/"
-            className="text-sm font-semibold uppercase tracking-wide text-[var(--accent)]"
+            className="text-sm font-semibold uppercase tracking-wide"
+            style={{
+              color:
+                pathname === "/"
+                  ? "var(--accent)"
+                  : "var(--muted)",
+            }}
           >
             Workout
           </Link>
 
           <Link
             href="/my-plan"
-            className="text-sm font-semibold uppercase tracking-wide text-[var(--muted)] transition hover:text-white"
+            className="text-sm font-semibold uppercase tracking-wide"
+            style={{
+              color:
+                pathname === "/my-plan"
+                  ? "var(--accent)"
+                  : "var(--muted)",
+            }}
           >
             My Plan
           </Link>
+
         </div>
 
         {/* Counters */}
