@@ -7,6 +7,7 @@ import { usePlan } from "@/context/PlanContext";
 
 export default function WorkoutDetails() {
   const { addToPlan, saveWorkout } = usePlan();
+
   const { id } = useParams();
 
   const [workout, setWorkout] = useState(null);
@@ -47,10 +48,9 @@ export default function WorkoutDetails() {
     <main className="min-h-screen">
       <div className="mx-auto max-w-7xl px-5 py-16 lg:px-8 lg:py-24">
 
-        {/* Top Section */}
         <div className="grid items-start gap-10 lg:grid-cols-2">
 
-          {/* Image */}
+          {/* Left: Workout Image */}
           <div className="overflow-hidden rounded-2xl">
             <Image
               src={workout.image}
@@ -61,17 +61,20 @@ export default function WorkoutDetails() {
             />
           </div>
 
-          {/* Information */}
+          {/* Right: Workout Information */}
           <div>
 
+            {/* Difficulty */}
             <span className="inline-block rounded-full bg-[var(--accent)] px-3 py-1 text-xs font-bold uppercase tracking-wide text-black">
               {workout.difficulty}
             </span>
 
+            {/* Title */}
             <h1 className="display-font mt-5 text-5xl font-bold uppercase leading-none sm:text-6xl">
               {workout.name}
             </h1>
 
+            {/* Description */}
             <p className="mt-5 text-base leading-7 text-[var(--muted)]">
               {workout.description}
             </p>
@@ -88,12 +91,13 @@ export default function WorkoutDetails() {
               ))}
             </div>
 
-            {/* Stats */}
+            {/* Workout Stats */}
             <div className="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-4">
-
               <div>
                 <p className="text-sm text-[var(--muted)]">Duration</p>
-                <p className="mt-1 font-bold">{workout.duration} min</p>
+                <p className="mt-1 font-bold">
+                  {workout.duration} min
+                </p>
               </div>
 
               <div>
@@ -105,71 +109,73 @@ export default function WorkoutDetails() {
 
               <div>
                 <p className="text-sm text-[var(--muted)]">Sets</p>
-                <p className="mt-1 font-bold">{workout.sets}</p>
+                <p className="mt-1 font-bold">
+                  {workout.sets}
+                </p>
               </div>
 
               <div>
                 <p className="text-sm text-[var(--muted)]">Reps</p>
-                <p className="mt-1 font-bold">{workout.reps}</p>
+                <p className="mt-1 font-bold">
+                  {workout.reps}
+                </p>
               </div>
-
             </div>
 
             {/* Equipment */}
             <div className="mt-8">
-              <p className="text-sm text-[var(--muted)]">Equipment</p>
-              <p className="mt-1 font-semibold">{workout.equipment}</p>
-            </div>
-          
-{/* Actions */}
-{/* Actions */}
-<div className="mt-8 flex flex-col gap-3 sm:flex-row">
-  <button
-    onClick={() => addToPlan(workout)}
-    className="rounded-full bg-[var(--accent)] px-6 py-3 text-sm font-bold uppercase tracking-wide text-black"
-  >
-    Add to Today&apos;s Plan
-  </button>
+              <p className="text-sm text-[var(--muted)]">
+                Equipment
+              </p>
 
-  <button
-    onClick={() => saveWorkout(workout)}
-    className="rounded-full border border-[var(--border)] px-6 py-3 text-sm font-bold uppercase tracking-wide text-white"
-  >
-    Save for Later
-  </button>
-</div>
+              <p className="mt-1 font-semibold">
+                {workout.equipment}
+              </p>
+            </div>
+
+            {/* Instructions */}
+            <section className="mt-10 border-t border-[var(--border)] pt-8">
+              <h2 className="display-font text-3xl font-bold uppercase sm:text-4xl">
+                Instructions
+              </h2>
+
+              <ol className="mt-6 space-y-5">
+                {workout.instructions.map((instruction, index) => (
+                  <li
+                    key={instruction}
+                    className="flex gap-4 text-[var(--muted)]"
+                  >
+                    <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[var(--accent)] text-sm font-bold text-black">
+                      {index + 1}
+                    </span>
+
+                    <span className="leading-7">
+                      {instruction}
+                    </span>
+                  </li>
+                ))}
+              </ol>
+            </section>
+
+            {/* Actions AFTER Instructions */}
+            <div className="mt-10 flex flex-col gap-3 sm:flex-row">
+              <button
+                onClick={() => addToPlan(workout)}
+                className="rounded-full bg-[var(--accent)] px-6 py-3 text-sm font-bold uppercase tracking-wide text-black"
+              >
+                Add to Today&apos;s Plan
+              </button>
+
+              <button
+                onClick={() => saveWorkout(workout)}
+                className="rounded-full border border-[var(--border)] px-6 py-3 text-sm font-bold uppercase tracking-wide text-white"
+              >
+                Save for Later
+              </button>
+            </div>
 
           </div>
         </div>
-
-        {/* Instructions */}
-        <section className="mt-16 border-t border-[var(--border)] pt-10">
-
-          <h2 className="display-font text-3xl font-bold uppercase sm:text-4xl">
-            Instructions
-          </h2>
-
-          <ol className="mt-6 max-w-3xl space-y-5">
-
-            {workout.instructions.map((instruction, index) => (
-              <li
-                key={instruction}
-                className="flex gap-4 text-[var(--muted)]"
-              >
-                <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[var(--accent)] text-sm font-bold text-black">
-                  {index + 1}
-                </span>
-
-                <span className="leading-7">
-                  {instruction}
-                </span>
-              </li>
-            ))}
-
-          </ol>
-
-        </section>
-
       </div>
     </main>
   );
