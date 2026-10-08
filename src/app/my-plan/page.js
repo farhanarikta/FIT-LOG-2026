@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { usePlan } from "@/context/PlanContext";
 import Navbar from "@/components/Navbar";
+import Link from "next/link";
 
 export default function MyPlan() {
   const {
@@ -101,6 +102,12 @@ export default function MyPlan() {
             <p className="mt-3 text-[var(--muted)]">
               Add workouts from the library to see them here.
             </p>
+            <Link
+  href="/"
+  className="mt-6 inline-flex rounded-full bg-[var(--accent)] px-5 py-2 text-xs font-bold uppercase tracking-wide text-black"
+>
+  Go to Workouts
+</Link>
           </div>
         )}
 
