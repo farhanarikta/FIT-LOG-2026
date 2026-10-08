@@ -46,23 +46,24 @@ export default function WorkoutDetails() {
 
   return (
     <main className="min-h-screen">
-      <div className="mx-auto max-w-7xl px-5 py-16 lg:px-8 lg:py-24">
+      <div className="mx-auto max-w-7xl px-5 py-12 sm:py-16 lg:px-8 lg:py-20">
 
-        <div className="grid items-start gap-10 lg:grid-cols-2">
+        {/* Main Two Column Layout */}
+        <div className="grid items-start gap-10 lg:grid-cols-2 lg:gap-12">
 
-          {/* Left: Workout Image */}
-          <div className="overflow-hidden rounded-2xl">
+          {/* LEFT: IMAGE */}
+          <div className="relative w-full overflow-hidden rounded-2xl aspect-[4/5]">
             <Image
               src={workout.image}
               alt={workout.name}
-              width={900}
-              height={700}
-              className="h-auto w-full object-cover"
+              fill
+              className="object-cover"
+              priority
             />
           </div>
 
-          {/* Right: Workout Information */}
-          <div>
+          {/* RIGHT: CONTENT */}
+          <div className="self-start">
 
             {/* Difficulty */}
             <span className="inline-block rounded-full bg-[var(--accent)] px-3 py-1 text-xs font-bold uppercase tracking-wide text-black">
@@ -70,7 +71,7 @@ export default function WorkoutDetails() {
             </span>
 
             {/* Title */}
-            <h1 className="display-font mt-5 text-5xl font-bold uppercase leading-none sm:text-6xl">
+            <h1 className="display-font mt-5 text-4xl font-bold uppercase leading-none sm:text-5xl lg:text-6xl">
               {workout.name}
             </h1>
 
@@ -92,30 +93,38 @@ export default function WorkoutDetails() {
             </div>
 
             {/* Workout Stats */}
-            <div className="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-4">
+            <div className="mt-8 grid grid-cols-2 gap-x-6 gap-y-5 sm:grid-cols-4">
               <div>
-                <p className="text-sm text-[var(--muted)]">Duration</p>
+                <p className="text-sm text-[var(--muted)]">
+                  Duration
+                </p>
                 <p className="mt-1 font-bold">
                   {workout.duration} min
                 </p>
               </div>
 
               <div>
-                <p className="text-sm text-[var(--muted)]">Calories</p>
+                <p className="text-sm text-[var(--muted)]">
+                  Calories
+                </p>
                 <p className="mt-1 font-bold">
                   {workout.caloriesBurned}
                 </p>
               </div>
 
               <div>
-                <p className="text-sm text-[var(--muted)]">Sets</p>
+                <p className="text-sm text-[var(--muted)]">
+                  Sets
+                </p>
                 <p className="mt-1 font-bold">
                   {workout.sets}
                 </p>
               </div>
 
               <div>
-                <p className="text-sm text-[var(--muted)]">Reps</p>
+                <p className="text-sm text-[var(--muted)]">
+                  Reps
+                </p>
                 <p className="mt-1 font-bold">
                   {workout.reps}
                 </p>
@@ -123,7 +132,7 @@ export default function WorkoutDetails() {
             </div>
 
             {/* Equipment */}
-            <div className="mt-8">
+            <div className="mt-7">
               <p className="text-sm text-[var(--muted)]">
                 Equipment
               </p>
@@ -134,7 +143,7 @@ export default function WorkoutDetails() {
             </div>
 
             {/* Instructions */}
-            <section className="mt-10 border-t border-[var(--border)] pt-8">
+            <section className="mt-9 border-t border-[var(--border)] pt-8">
               <h2 className="display-font text-3xl font-bold uppercase sm:text-4xl">
                 Instructions
               </h2>
@@ -157,8 +166,8 @@ export default function WorkoutDetails() {
               </ol>
             </section>
 
-            {/* Actions AFTER Instructions */}
-            <div className="mt-10 flex flex-col gap-3 sm:flex-row">
+            {/* Buttons AFTER Instructions */}
+            <div className="mt-9 flex flex-col gap-3 sm:flex-row">
               <button
                 onClick={() => addToPlan(workout)}
                 className="rounded-full bg-[var(--accent)] px-6 py-3 text-sm font-bold uppercase tracking-wide text-black"
