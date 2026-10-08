@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import Image from "next/image";
 import { usePlan } from "@/context/PlanContext";
+import Footer from "@/components/Footer";
 
 export default function WorkoutDetails() {
   const { addToPlan, saveWorkout } = usePlan();
@@ -186,6 +187,7 @@ export default function WorkoutDetails() {
           </div>
         </div>
       </div>
+      <Footer />
     </main>
   );
 }

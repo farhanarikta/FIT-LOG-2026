@@ -4,6 +4,7 @@ import { useState } from "react";
 import { usePlan } from "@/context/PlanContext";
 import Navbar from "@/components/Navbar";
 import Link from "next/link";
+import Footer from "@/components/Footer";
 
 export default function MyPlan() {
   const {
@@ -178,6 +179,7 @@ export default function MyPlan() {
         )}
 
       </div>
+        <Footer />
     </main>
   );
 }
